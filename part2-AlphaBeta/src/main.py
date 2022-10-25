@@ -9,16 +9,16 @@ def play(state):
     return alpha_beta_value(state)
 
 def main():
-    """You need to implement the following functions/methods:
-    play(state): makes turn and prints the result of it until the game is over
-    value() in TicTacToe class: returns the current score of the game
-    generate_children() in TicTacToe class: returns a list of all possible states after this turn
-    alpha_beta_value(node): implements the MinMax algorithm with alpha-beta pruning
-    max_value(node, alpha, beta): implements the MinMax algorithm with alpha-beta pruning
-    min_value(node, alpha, beta):implements the MinMax algorithm with alpha-beta pruning
+    """This function will look at the current state of a tic tac toe board and predict which player (X's or O's) will win given they pick the optimal moves.
+
+    Outcomes:
+     1 = X's win
+     0 = Draw
+    -1 = O's win
     """
-    empty_board = 'oo?' + 'x??' + 'x??'
-    state = TicTacToe(empty_board, True)
+
+    board = 'oo?' + 'x??' + 'x??'
+    state = TicTacToe(state = board, corsses_turn = True)
     print(play(state))
 
 
