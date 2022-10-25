@@ -26,7 +26,7 @@ class State:
 
     def __str__(self):
         """ Returns route as a string from the last stop to the beginning. 
-            Format: 1030423 -> 1010420 -> 1010427 
+        Format: 1030423 -> 1010420 -> 1010427 
         """
         result = self.stop
         state = self.previous
@@ -63,9 +63,10 @@ class CityMap:
         return list(self.stops.get(stop_code)["neighbors"].keys())
 
     def search(self, start, goal):
-        """Implement breadth-first search. Return the answer as a linked list of States
-        where the first node contains the goal stop code and each node is linked to the previous node in the path.
-        The last node in the list is the starting stop and its previous node is None.
+        """Thsi performs a simple breadth-first search and returns the path from the starting stop to the 
+        ending stop as a linked list of States. In the list, the first node contains the goal stop code and each 
+        node is linked to the previous node in the path. The last node in the list is the starting stop
+        and its previous node is None.
 
         :param start: Code of the initial stop (str)
         :param goal: Code of the last stop (str)
@@ -76,7 +77,7 @@ class CityMap:
         queue.append(State(start))
  
         visited=[start]
- 
+        
         while len(queue) != 0:
             cur_road=queue.popleft()
             neighbors = self.get_neighbors(cur_road.get_stop())
@@ -87,5 +88,4 @@ class CityMap:
                         return state
                     queue.append(state)
                     visited.append(neighbor)
-
         return None

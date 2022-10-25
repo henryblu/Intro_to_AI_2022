@@ -2,8 +2,8 @@ from citymap import CityMap
 
 
 def main():
-    """Implement search method of the CityMap class so that when searching for a route between
-    two stops, it returns a route as a linked list where the returned State object points to the destination.
+    """This program Implements a search method of the CityMap class so that when searching for a route between
+    two stops, it returns a the fastest route as a linked list where the returned State object points to the destination.
 
     For example when calling the travelplanner with starting stop "1250429" and destination "1121480"
     it will return a linked list of the following form:
