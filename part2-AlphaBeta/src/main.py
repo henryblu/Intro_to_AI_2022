@@ -18,7 +18,7 @@ def main():
     """
 
     board = 'oo?' + 'x??' + 'x??'
-    state = TicTacToe(state = board, corsses_turn = True)
+    state = TicTacToe(state = board, crosses_turn = True)
     print(play(state))
 
 
