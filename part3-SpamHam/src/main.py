@@ -11,6 +11,6 @@ def main():
     # print(antispambot.evaluate('I am not a bot I swear'.split()))
     # print(antispambot.evaluate_from_input())
 
-
+ 
 if __name__ == '__main__':
     main()
