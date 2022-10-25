@@ -156,9 +156,9 @@ class CityMap:
         return transition_time
 
     def search(self, start, goal, time_of_beginning):
-        """Implement A* search. Return the answer as a linked list of States
-        where the first node contains the goal stop, time of travel and each node is linked to the previous node in the path.
-        The last node in the list is the starting stop and its previous node is None.
+        """This function implements an A* search. The return value is a linked list of States where the 
+        first node contains the goal stop, time of travel and each node is linked to the previous node 
+        in the path. The last node in the list is the starting stop and its previous node is None.
 
         :param start: Initial stop (obj)
         :param goal: Last stop (obj)
@@ -169,19 +169,29 @@ class CityMap:
         # Specify goal for correct heuristic and comparator methods
         State.goal = goal
 
+        # Initialize the priority queue with the time it takes to get there from the first stop and the first stop object in a list.
         to_visit = Q.PriorityQueue()
         to_visit.put([0,State(start, time_of_beginning)])
         processed=[]
+
         while not to_visit.empty():
             next = to_visit.get()[1]
+            # take the first element from the queue and if it has not been looked at before, look at its relations
+
             if next.get_stop_code() not in processed:
                 processed.append(next.get_stop_code())
+
+                # for each neighbor of the current stop, create a new state and add it to the queue
                 for edge in self.get_neighbors(next.get_stop_code()):
+
+                    # cost is the time it takes to get to the neighbor from the root stop
                     time_d=next.get_time()+self.fastest_transition(next.get_stop_code(),edge, next.get_time())
                     neighbour = State(self.get_stop(edge),time_d,next)
                     cost = time_d + neighbour.heuristic()
+                    
+                    
+                    # if the neighbor is the goal, return the state else add it to the queue
                     if edge == goal['code']:
                         return neighbour
                     to_visit.put((cost,neighbour))
-        # Implement me
         return None
