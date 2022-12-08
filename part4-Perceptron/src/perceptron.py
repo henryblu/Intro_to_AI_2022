@@ -64,8 +64,27 @@ class Perceptron:
         random.seed()
 
     def train(self, target_char, opposite_char, steps):
-        # Implement method
-        pass
+        """Trains the perceptron with the first 5000 x,y pairs."""
+            
+        self.weights = np.zeros(NUMBER_OF_PIXELS)
+        correct = 0
+        total = 0
+
+        for i in range(steps):
+            for data in self.data[:5000]:
+                if data['char'] == target_char or data['char'] == opposite_char:
+                    total += 1
+                    z = np.dot(data['vector'], self.weights)
+                    if (z >= 0 and data['char'] == target_char) or (z < 0 and data['char'] == opposite_char):
+                        correct += 1
+                    else:
+                        if data['char'] == target_char:
+                            self.weights += data['vector']
+                        else:
+                            self.weights -= data['vector']
+
+
+
 
     def test(self, target_char, opposite_char):
         """Tests the learned perceptron with the last 1000 x,y pairs.
